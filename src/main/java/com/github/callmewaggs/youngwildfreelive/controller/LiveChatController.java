@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,19 +30,15 @@ public class LiveChatController {
 
     @GetMapping("/room")
     public ModelAndView displayRoomView() {
-        return createNewModelAndView("room", null, null);
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("room");
+        return mav;
     }
 
     @GetMapping("/livechat")
     public ModelAndView displayLiveChatView() {
-        return createNewModelAndView("livechat", null, null);
-    }
-
-    private ModelAndView createNewModelAndView(String viewName, Object attributeValue, String attributeName) {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName(viewName);
-        if (attributeValue != null)
-            mav.addObject(attributeName, attributeValue);
+        mav.setViewName("livechat");
         return mav;
     }
 }
