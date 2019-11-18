@@ -42,14 +42,13 @@ function errorMsg(msg, error) {
     }
 }
 
-async function init(e) {
+async function init() {
     try {
         const stream = await navigator.mediaDevices.getUserMedia(constraints);
         handleSuccess(stream);
-        e.target.disabled = true;
     } catch (e) {
         handleError(e);
     }
 }
 
-document.querySelector('#showVideo').addEventListener('click', e => init(e));
+init().then(() => console.log("Open success"));
