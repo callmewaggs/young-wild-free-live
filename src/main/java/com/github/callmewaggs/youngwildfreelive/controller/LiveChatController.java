@@ -1,35 +1,25 @@
 package com.github.callmewaggs.youngwildfreelive.controller;
 
-import com.github.callmewaggs.youngwildfreelive.model.Category;
 import com.github.callmewaggs.youngwildfreelive.model.Room;
-import com.github.callmewaggs.youngwildfreelive.repository.RoomRepository;
-import org.hibernate.annotations.WhereJoinTable;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.websocket.server.PathParam;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Controller
 public class LiveChatController {
 
-    private final RoomRepository roomRepository;
-
-    public LiveChatController(RoomRepository roomRepository) {
-        this.roomRepository = roomRepository;
-    }
-
     @GetMapping("/")
     public ModelAndView displayIndexView() {
+        Room room1 = new Room(1, "test1", "yoonsung", 100
+                , "", "game", "1920x1080", LocalDateTime.now().toString());
+        Room room2 = new Room(2, "test2", "yoonsung", 100
+                , "", "game", "1920x1080", LocalDateTime.now().toString());
 
-        List<Room> rooms = roomRepository.findAll();
+        List<Room> rooms = Arrays.asList(room1, room2);
 
         ModelAndView mav = new ModelAndView();
         mav.setViewName("index");
@@ -43,20 +33,6 @@ public class LiveChatController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("room");
         return mav;
-    }
-    @GetMapping("/create-room")
-    public ModelAndView displayCreateRoomView() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("create-room");
-        return mav;
-    }
-    @PostMapping("/create-room")
-    public String createRoom(String name, Category category) {
-        String hostName = "test";
-        Room room = new Room(name, hostName, category, LocalDateTime.now());
-        roomRepository.save(room);
-
-        return "redirect:/" + room.getShortURL();
     }
 
     @GetMapping("/livechat")
