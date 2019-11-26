@@ -3,30 +3,37 @@ package com.github.callmewaggs.youngwildfreelive.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
+@Entity
 public class Room {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
     String roomName;
     String hostName;
     int nowWatching;
-    String thumbnail;
-    String shortURL;
-    String category;
+    String thumbnailURL;
+    @Enumerated(EnumType.STRING)
+    Category category;
     String resolution;
-    String createdAt;
+    LocalDateTime createdAt;
 
-    public Room(long id, String roomName, String hostName, int nowWatching, String thumbnail, String category, String resolution, String createdAt) {
-        String newShortURL = "/" + hostName + "/" + id;
+    private Room() {
 
-        this.id = id;
+    }
+
+    public Room(String roomName, String hostName, Category category, LocalDateTime createdAt) {
         this.roomName = roomName;
         this.hostName = hostName;
-        this.nowWatching = nowWatching;
-        this.thumbnail = thumbnail;
-        this.shortURL = newShortURL;
         this.category = category;
-        this.resolution = resolution;
         this.createdAt = createdAt;
+    }
+
+    public String getShortURL() {
+        return "/" + hostName + "/" + id;
     }
 }

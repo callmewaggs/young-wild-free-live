@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/webjars/mdui/dist/css/mdui.css}">
+    <link rel="stylesheet" href="//www.mdui.org/source/dist/css/mdui.min.css?v=0.4.3">
+    <link rel="stylesheet" href="//www.mdui.org/docs/assets/highlight-9.12.0/styles/github-gist.css">
+    <link rel="stylesheet" href="//www.mdui.org/docs/assets/highlight-9.12.0/styles/railscasts.css">
+    <link rel="stylesheet" href="//www.mdui.org/docs/assets/docs/css/docs.css?v=20170815">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/mdui/dist/js/mdui.js}"></script>
+    <meta charset="utf-8" name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+    <base target="_blank">
+    <title>Young & Wild & Free Live Chat</title>
+</head>
+
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-accent-pink mdui-loaded mdui-theme-primary-blue-grey mdui-theme-layout-dark">
+<header class="mdui-appbar mdui-appbar-fixed">
+    <!-- top nav bar div-->
+    <div class="mdui-toolbar mdui-color-theme">
+        <span class="mdui-typo-headline mdui-text-color-white">
+            <img class="banner" src="images/banner.png" style="height: 45px; vertical-align: middle">
+        </span>
+        <div class="mdui-typo-body-1" onclick="test()">Home</div>
+        <div class="mdui-typo-body-1" onclick="test()">Top 50</div>
+        <div class="mdui-typo-body-1" onclick="test()">Recently Added</div>
+        <div class="mdui-typo-body-1" onclick="test()">My List</div>
+
+        <div class="mdui-toolbar-spacer"></div>
+        <a class="mdui-btn mdui-btn-icon" th:href="@{/login}">
+            <i class="mdui-icon material-icons mdui-text-color-white-icon">vpn_key</i>
+        </a>
+        <a class="mdui-btn mdui-btn-icon" th:href="@{/logout}">
+            <i class="mdui-icon material-icons mdui-text-color-white-icon">exit_to_app</i>
+        </a>
+    </div>
+</header>
+
+<!-- left nav list div-->
+<div class="mdui-drawer">
+    <div class="mdui-list" style="margin-bottom: 76px;">
+        <div class="mdui-collapse-item ">
+            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-white">live_tv</i>
+                <div class="mdui-list-item-content">On Air Live</div>
+                <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+            </div>
+            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-white">play_circle_filled</i>
+                <div class="mdui-list-item-content">VOD</div>
+                <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+            </div>
+            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-red">fiber_manual_record</i>
+                <a class="mdui-list-item-content" href="/room">방송하기</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mdui-container" style="margin-bottom: 80px;">
+    <form action="/create-room" method="post">
+        <input type="text" id="roomName" name="roomName">
+        <select id="category" name="category">
+            <option th:each="categoryOpt : ${T(com.github.callmewaggs.youngwildfreelive.model.Category).values()}"
+                    th:value="${categoryOpt}" th:text="${categoryOpt.getTitle()}">
+        </select>
+        <input type="submit" value="제출하기">
+    </form>
+
+</div>
+<script src="//www.mdui.org/docs/assets/smooth-scroll-11.1.0/smooth-scroll.min.js"></script>
+<script src="//www.mdui.org/docs/assets/holder-2.9.4/holder.min.js"></script>
+<script src="//www.mdui.org/docs/assets/highlight-9.12.0/highlight.pack.js"></script>
+<script src="//www.mdui.org/source/dist/js/mdui.min.js?v=0.4.3"></script>
+<script src="//www.mdui.org/docs/assets/docs/js/docs.js?v=20170815"></script>
+<script src="//www.mdui.org/docs/assets/clipboard-1.6.1/clipboard.min.js"></script>
+</body>
+</html>
+
