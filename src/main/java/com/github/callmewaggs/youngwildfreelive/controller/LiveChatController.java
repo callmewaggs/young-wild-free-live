@@ -65,4 +65,10 @@ public class LiveChatController {
         mav.setViewName("livechat");
         return mav;
     }
+    @GetMapping("/login")
+    public ModelAndView displayLoginView() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("login");
+        return mav;
+    }
 }

@@ -53,6 +53,73 @@
         </dependency>
 
 
+        <!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>4.3.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>5.11.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars.bowergithub.polymerelements/font-roboto -->
+        <dependency>
+            <groupId>org.webjars.bowergithub.polymerelements</groupId>
+            <artifactId>font-roboto</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars.bower/angular-animate -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>angular-animate</artifactId>
+            <version>1.7.8</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars/material-design-icons -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>material-design-icons</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.rey5137/material -->
+        <dependency>
+            <groupId>com.github.rey5137</groupId>
+            <artifactId>material</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars.bower/css-hamburgers -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>css-hamburgers</artifactId>
+            <version>0.7.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars/select2 -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>select2</artifactId>
+            <version>4.0.10</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars.bower/jquery -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.4.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.webjars.npm/popper.js -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>popper.js</artifactId>
+            <version>1.16.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars.npm/moment -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>moment</artifactId>
+            <version>2.24.0</version>
+        </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>webjars-locator-core</artifactId>
@@ -98,13 +165,6 @@
             <groupId>org.webjars.bower</groupId>
             <artifactId>webrtc-adapter</artifactId>
             <version>7.2.9</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.webjars.bower/jquery -->
-        <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>jquery</artifactId>
-            <version>3.4.1</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.webjars/Semantic-UI -->
