@@ -16,31 +16,34 @@
     <title>Young & Wild & Free Live Chat</title>
 </head>
 
-<body class="mdui-appbar-with-toolbar mdui-theme-accent-pink mdui-loaded mdui-theme-primary-blue-grey mdui-theme-layout-dark">
+<body class="mdui-appbar-with-toolbar mdui-theme-accent-red mdui-loaded mdui-theme-primary-blue-grey mdui-theme-layout-dark">
 <header class="mdui-appbar mdui-appbar-fixed">
     <!-- top nav bar div-->
     <div class="mdui-toolbar mdui-color-theme">
         <span class="mdui-typo-headline mdui-text-color-white">
-            <img class="banner" src="images/banner.png" style="height: 45px; vertical-align: middle">
+            <a th:href="@{/}" target="_self">
+            <img class="banner" src="images/banner_white.png" style="height: 45px; vertical-align: middle">
+            </a>
         </span>
-        <div class="mdui-typo-body-1" onclick="test()">Home</div>
-        <div class="mdui-typo-body-1" onclick="test()">Top 50</div>
-        <div class="mdui-typo-body-1" onclick="test()">Recently Added</div>
-        <div class="mdui-typo-body-1" onclick="test()">My List</div>
+        <div class="mdui-typo-body-1" th:href="@{/#}" target="_self">Home</div>
+        <div class="mdui-typo-body-1" th:href="@{/#}" target="_self">Top 50</div>
+        <div class="mdui-typo-body-1" th:href="@{/#}" target="_self">Recently Added</div>
+        <div class="mdui-typo-body-1" th:href="@{/#}" target="_self">My List</div>
 
         <div class="mdui-toolbar-spacer"></div>
-        <a class="mdui-btn mdui-btn-icon" th:href="@{/login}">
+        <a class="mdui-btn mdui-btn-icon" th:if="${session.isEmpty()}" th:href="@{/signin}" target="_self">
             <i class="mdui-icon material-icons mdui-text-color-white-icon">vpn_key</i>
         </a>
-        <a class="mdui-btn mdui-btn-icon" th:href="@{/logout}">
+        <a class="mdui-btn mdui-btn-icon" th:unless="${session.isEmpty()}" th:href="@{/logout}" target="_self">
             <i class="mdui-icon material-icons mdui-text-color-white-icon">exit_to_app</i>
         </a>
     </div>
 </header>
-
 <section layout:fragment="content">
     <p>This is a paragraph from the content page<</p>
 </section>
+
+<h1 th:text="${session.username}" style="color: white"></h1>
 
 <script src="//www.mdui.org/docs/assets/smooth-scroll-11.1.0/smooth-scroll.min.js"></script>
 <script src="//www.mdui.org/docs/assets/holder-2.9.4/holder.min.js"></script>

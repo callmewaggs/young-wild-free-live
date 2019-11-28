@@ -13,9 +13,9 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
-    String roomName;
-    String hostName;
-    int nowWatching;
+    String roomname;
+    String hostname;
+    int nowwatching;
     String thumbnailURL;
     @Enumerated(EnumType.STRING)
     Category category;
@@ -26,14 +26,14 @@ public class Room {
 
     }
 
-    public Room(String roomName, String hostName, Category category, LocalDateTime createdAt) {
-        this.roomName = roomName;
-        this.hostName = hostName;
+    public Room(String roomname, String hostname, Category category, LocalDateTime createdAt) {
+        this.roomname = roomname;
+        this.hostname = hostname;
         this.category = category;
         this.createdAt = createdAt;
     }
 
     public String getShortURL() {
-        return "/" + hostName + "/" + id;
+        return "/" + hostname + "/" + id;
     }
 }

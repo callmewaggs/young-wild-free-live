@@ -144,7 +144,7 @@ iframe {
 
 .txt2 {
   font-family: Poppins-Regular;
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1.5;
   color: #ffffff;
   text-transform: uppercase;
@@ -208,6 +208,14 @@ iframe {
   display: block;
   font-family: Poppins-Bold;
   font-size: 39px;
+  color: #ffffff;
+  line-height: 1.2;
+  text-align: center;
+}
+.signup100-form-title {
+  display: block;
+  font-family: Poppins-Bold;
+  font-size: 25px;
   color: #ffffff;
   line-height: 1.2;
   text-align: center;
@@ -360,7 +368,7 @@ iframe {
 
 .login100-form-btn {
   font-family: Poppins-Medium;
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
   line-height: 1.2;
   text-transform: uppercase;
