@@ -22,7 +22,7 @@ public class Room {
     String resolution;
     LocalDateTime createdAt;
 
-    private Room() {
+    public Room() {
 
     }
 
@@ -34,6 +34,6 @@ public class Room {
     }
 
     public String getShortURL() {
-        return "/" + hostname + "/" + id;
+        return "/" + id;
     }
 }

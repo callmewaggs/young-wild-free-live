@@ -1,5 +1,6 @@
 package com.github.callmewaggs.youngwildfreelive.model;
 
+import com.github.callmewaggs.youngwildfreelive.controller.vo.UserVO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,5 +24,14 @@ public class User {
 
     public User() {
 
+    }
+
+    public User(UserVO userVO, LocalDateTime createdAt) {
+        this.username = userVO.getUsername();
+        this.password = userVO.getPassword();
+        this.nickname = userVO.getNickname();
+        this.email = userVO.getEmail();
+        this.contact = userVO.getContact();
+        this.createdAt = createdAt;
     }
 }

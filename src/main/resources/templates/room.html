@@ -89,13 +89,14 @@
     </style>
 </head>
 
-<body class="mdui-theme-layout-dark">
+<body class="mdui-theme-layout-dark" th:object="${roomInfo}">
 
 <!--total div-->
 <header class="mdui-appbar">
     <!--nav bar div-->
     <div class="mdui-toolbar mdui-color-theme">
-        <span class="mdui-typo-title mdui-text-color-white" style="margin-left: 5%">### 님의 방입니다.</span>
+        <span class="mdui-typo-title mdui-text-color-white" style="margin-left: 5%"
+              th:text="${roomInfo.roomname} + ' / ' + ${roomInfo.hostname} + ' 님의 방입니다.'"></span>
         <div class="mdui-toolbar-spacer"></div>
         <a class="mdui-btn mdui-btn-icon" th:href="@{/logout}">
             <i class="mdui-icon material-icons mdui-text-color-white-icon">exit_to_app</i>

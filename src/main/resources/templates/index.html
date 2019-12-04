@@ -21,7 +21,8 @@
                 </div>
                 <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
                     <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-red">fiber_manual_record</i>
-                    <a class="mdui-list-item-content" href="/room">방송하기</a>
+                    <a class="mdui-list-item-content" th:if="${session.isEmpty()}" th:href="@{/signin}" target="_self">방송하기</a>
+                    <a class="mdui-list-item-content" th:unless="${session.isEmpty()}" th:href="@{/room/create-room}" target="_self">방송하기</a>
                 </div>
             </div>
         </div>
