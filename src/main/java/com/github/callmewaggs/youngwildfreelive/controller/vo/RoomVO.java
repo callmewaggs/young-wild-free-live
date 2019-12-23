@@ -27,7 +27,7 @@ public class RoomVO {
         this.id = room.getId();
         this.roomname = room.getRoomname();
         this.hostname = room.getHostname();
-        this.nowwatching = room.getNowwatching();
+        this.nowwatching = room.getNowWatching();
         this.thumbnailURL = room.getThumbnailURL();
         this.category = room.getCategory();
         this.resolution = room.getResolution();

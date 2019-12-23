@@ -53,7 +53,6 @@ public class UserController {
         return createModelAndView("index", null, null);
     }
 
-
     @GetMapping("/signup")
     public ModelAndView displaySignUpView(@ModelAttribute UserVO userVO) {
         if (userVO == null)

@@ -158,8 +158,6 @@
             </exclusions>
         </dependency>
 
-
-
         <!-- https://mvnrepository.com/artifact/org.webjars.bower/webrtc-adapter -->
         <dependency>
             <groupId>org.webjars.bower</groupId>

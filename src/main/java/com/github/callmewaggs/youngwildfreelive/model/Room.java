@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,28 +13,49 @@ import java.time.LocalDateTime;
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
-    String roomname;
-    String hostname;
-    int nowwatching;
-    String thumbnailURL;
+    private long id;
+
+    private String roomname;
+
+    private String hostname;
+
+    private String thumbnailURL;
+
     @Enumerated(EnumType.STRING)
-    Category category;
-    String resolution;
-    LocalDateTime createdAt;
+    private Category category;
+
+    private String resolution;
+
+    private LocalDateTime createdAt;
+
+    private List<User> watchingUsers;
 
     public Room() {
 
     }
 
-    public Room(String roomname, String hostname, Category category, LocalDateTime createdAt) {
+    public Room(String roomname, String hostname, Category category, LocalDateTime createdAt, List<User> watchingUsers) {
         this.roomname = roomname;
         this.hostname = hostname;
         this.category = category;
         this.createdAt = createdAt;
+        this.watchingUsers = watchingUsers;
     }
 
     public String getShortURL() {
         return "/" + id;
+    }
+
+
+    public List<User> watchingUsers() {
+        return this.watchingUsers;
+    }
+
+    public int getNowWatching() {
+        return this.watchingUsers.size();
+    }
+
+    public void join(User user) {
+        this.watchingUsers.add(user);
     }
 }

@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Controller
@@ -63,7 +64,7 @@ public class RoomController {
         Optional<User> user = userService.findUserByUsername(username);
 
         if (user.isPresent()) {
-            Room room = new Room(roomname, user.get().getNickname(), category, LocalDateTime.now());
+            Room room = new Room(roomname, user.get().getNickname(), category, LocalDateTime.now(), new ArrayList<>());
             roomService.createRoom(room);
             return "redirect:/room" + room.getShortURL();
         }
