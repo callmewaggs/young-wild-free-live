@@ -17,6 +17,7 @@ public class Room {
 
     private String roomname;
 
+    // TODO : User 를 들고 있도록
     private String hostname;
 
     private String thumbnailURL;
@@ -28,6 +29,10 @@ public class Room {
 
     private LocalDateTime createdAt;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "room_user",
+            joinColumns = @JoinColumn(name = "room_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> watchingUsers;
 
     public Room() {
@@ -45,7 +50,6 @@ public class Room {
     public String getShortURL() {
         return "/" + id;
     }
-
 
     public List<User> watchingUsers() {
         return this.watchingUsers;
