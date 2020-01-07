@@ -7,6 +7,8 @@ public interface UserManager {
 
     void createUser(User user);
 
+    Optional<User> findUserById(long id);
+
     Optional<User> findUserByUsername(String username);
 
     Optional<User> findUserByUsernameAndPassword(String username, String password);

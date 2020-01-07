@@ -20,6 +20,11 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
+    public Optional<User> findUserById(long id) {
+        return userRepository.findUserById(id);
+    }
+
+    @Override
     public Optional<User> findUserByUsername(String username) {
         try {
             return userRepository.findUserByUsername(username);
