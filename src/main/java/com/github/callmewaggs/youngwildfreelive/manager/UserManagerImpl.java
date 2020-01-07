@@ -1,17 +1,16 @@
-package com.github.callmewaggs.youngwildfreelive.service;
+package com.github.callmewaggs.youngwildfreelive.manager;
 
 import com.github.callmewaggs.youngwildfreelive.model.User;
 import com.github.callmewaggs.youngwildfreelive.repository.UserRepository;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
-public class UserServiceImpl implements UserService {
+public class UserManagerImpl implements UserManager {
 
     private UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserManagerImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -24,16 +23,16 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findUserByUsername(String username) {
         try {
             return userRepository.findUserByUsername(username);
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             return Optional.empty();
         }
     }
 
     @Override
-    public Optional<User> findMemberByUsernameAndPassword(String username, String password) {
+    public Optional<User> findUserByUsernameAndPassword(String username, String password) {
         try {
             return userRepository.findUserByUsernameAndPassword(username, password);
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             return Optional.empty();
         }
     }

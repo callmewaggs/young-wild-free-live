@@ -1,9 +1,14 @@
 package com.github.callmewaggs.youngwildfreelive.controller;
 
 import com.github.callmewaggs.youngwildfreelive.controller.vo.RoomVO;
+import com.github.callmewaggs.youngwildfreelive.manager.RoomManager;
 import com.github.callmewaggs.youngwildfreelive.model.Category;
 import com.github.callmewaggs.youngwildfreelive.model.Room;
-import com.github.callmewaggs.youngwildfreelive.service.RoomService;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Optional;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,20 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/room")
 public class RoomController {
 
-    private final RoomService roomService;
+    private final RoomManager roomManager;
 
-    public RoomController(RoomService roomService) {
-        this.roomService = roomService;
+    public RoomController(RoomManager roomManager) {
+        this.roomManager = roomManager;
     }
 
     // get 으로 데이터를 받을 시 유효 세션이 없을경우 잘못된 접근으로 간주
@@ -37,7 +36,7 @@ public class RoomController {
             return createModelAndView("signin", null, null);
         }
 
-        Optional<Room> found = roomService.findRoomById(id);
+        Optional<Room> found = roomManager.findRoomById(id);
 
         // TODO : 1. 유저가 있는지 없는지, 2. 호스트 여부
         if (found.isPresent()) {
@@ -64,7 +63,7 @@ public class RoomController {
     @PostMapping("/create-room")
     public String createRoom(String roomname, Category category, HttpServletRequest request) {
         String username = (String) request.getSession().getAttribute("username");
-        Room room = roomService.createRoom(username, roomname, category);
+        Room room = roomManager.createRoom(username, roomname, category);
         return "redirect:/room" + room.getShortURL();
     }
 

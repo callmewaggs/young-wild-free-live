@@ -1,12 +1,11 @@
-package com.github.callmewaggs.youngwildfreelive.service;
+package com.github.callmewaggs.youngwildfreelive.manager;
 
 import com.github.callmewaggs.youngwildfreelive.model.Category;
 import com.github.callmewaggs.youngwildfreelive.model.Room;
-
 import java.util.List;
 import java.util.Optional;
 
-public interface RoomService {
+public interface RoomManager {
     List<Room> findAll();
 
     Room createRoom(String username, String roomname, Category category);
