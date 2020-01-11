@@ -1,174 +1,175 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" th:href="@{/webjars/mdui/dist/css/mdui.css}">
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/mdui/dist/js/mdui.js}"></script>
-    <meta charset="utf-8" name="viewport"
-          content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta id="theme-color" name="theme-color" content="#ffffff">
-    <base target="_blank">
-    <title>Young & Wild & Free Live Chat</title>
+  <link rel="stylesheet" th:href="@{/webjars/mdui/dist/css/mdui.css}">
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/mdui/dist/js/mdui.js}"></script>
+  <meta charset="utf-8"
+        content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1"
+        name="viewport">
+  <meta content="yes" name="mobile-web-app-capable">
+  <meta content="#ffffff" id="theme-color" name="theme-color">
+  <base target="_blank">
+  <title>Young & Wild & Free Live Chat</title>
 
-    <style>
-        img {
-            position: relative;
-        }
+  <style>
+    img {
+      position: relative;
+    }
 
-        /* style this to fit your needs */
-        /* and remove [alt] to apply to all images*/
-        img:after {
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            line-height: 2;
-            text-align: center;
-            content: attr(alt);
-        }
+    /* style this to fit your needs */
+    /* and remove [alt] to apply to all images*/
+    img:after {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      line-height: 2;
+      text-align: center;
+      content: attr(alt);
+    }
 
-        .container_video {
-            width: 45%;
-            float: left;
-            margin-left: 80px;
-        }
+    .container_video {
+      width: 45%;
+      float: left;
+      margin-left: 80px;
+    }
 
-        .container_content {
-            width: 45%;
-            float: right;
-            margin-right: 80px;
-        }
+    .container_content {
+      width: 45%;
+      float: right;
+      margin-right: 80px;
+    }
 
-        .container_message {
-            float: left;
-            width: 97%;
-            height: 400px;
-            margin-left: 20px;
-        }
+    .container_message {
+      float: left;
+      width: 97%;
+      height: 400px;
+      margin-left: 20px;
+    }
 
-        .container_card {
-            height: 100px;
-        }
+    .container_card {
+      height: 100px;
+    }
 
-        .container_online {
-            float: left;
-            width: 95%;
-            height: 100px;
-            margin-left: 20px;
-        }
+    .container_online {
+      float: left;
+      width: 95%;
+      height: 100px;
+      margin-left: 20px;
+    }
 
-        .container_user {
-            float: left;
-            width: 95%;
-            height: 200px;
-            margin-left: 20px;
-        }
+    .container_user {
+      float: left;
+      width: 95%;
+      height: 200px;
+      margin-left: 20px;
+    }
 
 
-        .online {
-            height: 50%
-        }
+    .online {
+      height: 50%
+    }
 
-        .offline {
-            height: 50%
-        }
+    .offline {
+      height: 50%
+    }
 
-        .alert {
-            text-align: center;
-            background: snow;
-        }
+    .alert {
+      text-align: center;
+      background: snow;
+    }
 
-        .time {
-            text-align: right;
-            font-size: xx-small;
-        }
-    </style>
+    .time {
+      text-align: right;
+      font-size: xx-small;
+    }
+  </style>
 </head>
 
 <body class="mdui-theme-layout-dark" th:object="${roomInfo}">
 
 <!--total div-->
 <header class="mdui-appbar">
-    <!--nav bar div-->
-    <div class="mdui-toolbar mdui-color-theme">
+  <!--nav bar div-->
+  <div class="mdui-toolbar mdui-color-theme">
         <span class="mdui-typo-title mdui-text-color-white" style="margin-left: 5%"
               th:text="${roomInfo.roomname} + ' / ' + ${roomInfo.hostname} + ' 님의 방입니다.'"></span>
-        <div class="mdui-toolbar-spacer"></div>
-        <a class="mdui-btn mdui-btn-icon" th:href="@{/logout}">
-            <i class="mdui-icon material-icons mdui-text-color-white-icon">exit_to_app</i>
-        </a>
-    </div>
+    <div class="mdui-toolbar-spacer"></div>
+    <a class="mdui-btn mdui-btn-icon" th:href="@{/logout}">
+      <i class="mdui-icon material-icons mdui-text-color-white-icon">exit_to_app</i>
+    </a>
+  </div>
 </header>
 
 <!--left video div-->
 <div class="container_video" id="container_video">
-    <video id="gum-local" autoplay playsinline></video>
-    <br>
-    <div id="errorMsg"></div>
+  <video autoplay id="gum-local" playsinline></video>
+  <br>
+  <div id="errorMsg"></div>
 </div>
 <!--right content div-->
 <div class="container_content">
 
-    <!--right message div-->
-    <div class="container_message mdui-col-xs-6 mdui-col-sm-5" id="messages" style="padding:10px 0">
-        <div class="mdui-card-primary">
-            <div class="mdui-card-content message-content">
-                test
-                <span class="time"> [' + time + ']</span>
-            </div>
-        </div>
+  <!--right message div-->
+  <div class="container_message mdui-col-xs-6 mdui-col-sm-5" id="messages" style="padding:10px 0">
+    <div class="mdui-card-primary">
+      <div class="mdui-card-content message-content">
+        test
+        <span class="time"> [' + time + ']</span>
+      </div>
     </div>
+  </div>
 
 
-    <div class="container_online">
-        <div class="mdui-chip">
+  <div class="container_online">
+    <div class="mdui-chip">
                     <span class="mdui-chip-icon mdui-color-grey">
                         <i class="mdui-icon material-icons">accessibility</i></span>
-            <span class="mdui-chip-title">Online Users (<span class="chat-num"></span>)</span>
-        </div>
-        <br>
-        <div class="online" id="online">
-        </div>
+      <span class="mdui-chip-title">Online Users (<span class="chat-num"></span>)</span>
     </div>
-
-    <div class="container_user">
-        <div class="mdui-col-xs-12 mdui-col-sm-10">
-            <div class="mdui-textfield-floating-label" style="margin-top:15px">
-                <i class="mdui-icon">User : </i>
-                <i class="mdui-icon" id="username" th:text="${session.loginInfo}"></i>
-            </div>
-        </div>
-        <div class="mdui-col-xs-12 mdui-col-sm-10">
-            <div class="mdui-textfield mdui-textfield-floating-label">
-                <i class="mdui-icon material-icons">textsms</i>
-                <label class="mdui-textfield-label">Send Text</label>
-                <input class="mdui-textfield-input" id="msg"/>
-            </div>
-
-            <div class="mdui-container" style="padding:20px 35px">
-                <button class="mdui-btn mdui-color-theme mdui-ripple mdui-text-color-white"
-                        onclick="sendToServer()">SEND
-                </button>
-
-                <button class="mdui-btn mdui-color-theme mdui-ripple mdui-text-color-white"
-                        onclick="clearMsg()">CLEAR
-                </button>
-            </div>
-
-            <form action="/upload" enctype="multipart/form-data" method="POST">
-                <input id="sender" name="sender" th:value="${session.loginInfo}" type="hidden"/>
-                <input id="file" name="file" onclick="fileSelect()" type="file"><br/>
-                <div id="image_section" style="text-align: right;">
-                </div>
-
-                <input type="submit" value="File Upload">
-            </form>
-        </div>
+    <br>
+    <div class="online" id="online">
     </div>
+  </div>
+
+  <div class="container_user">
+    <div class="mdui-col-xs-12 mdui-col-sm-10">
+      <div class="mdui-textfield-floating-label" style="margin-top:15px">
+        <i class="mdui-icon">User : </i>
+        <i class="mdui-icon" id="username" th:text="${session.loginInfo}"></i>
+      </div>
+    </div>
+    <div class="mdui-col-xs-12 mdui-col-sm-10">
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        <i class="mdui-icon material-icons">textsms</i>
+        <label class="mdui-textfield-label">Send Text</label>
+        <input class="mdui-textfield-input" id="msg"/>
+      </div>
+
+      <div class="mdui-container" style="padding:20px 35px">
+        <button class="mdui-btn mdui-color-theme mdui-ripple mdui-text-color-white"
+                onclick="sendToServer()">SEND
+        </button>
+
+        <button class="mdui-btn mdui-color-theme mdui-ripple mdui-text-color-white"
+                onclick="clearMsg()">CLEAR
+        </button>
+      </div>
+
+      <form action="/upload" enctype="multipart/form-data" method="POST">
+        <input id="sender" name="sender" th:value="${session.loginInfo}" type="hidden"/>
+        <input id="file" name="file" onclick="fileSelect()" type="file"><br/>
+        <div id="image_section" style="text-align: right;">
+        </div>
+
+        <input type="submit" value="File Upload">
+      </form>
+    </div>
+  </div>
 </div>
 
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>

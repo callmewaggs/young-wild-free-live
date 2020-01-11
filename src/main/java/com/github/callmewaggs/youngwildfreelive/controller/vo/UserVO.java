@@ -10,9 +10,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserVO {
-    String username;
-    String password;
-    String nickname;
-    String email;
-    String contact;
+
+  String username;
+  String password;
+  String nickname;
+  String email;
+  String contact;
 }

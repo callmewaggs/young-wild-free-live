@@ -5,58 +5,61 @@
 <body>
 <section layout:fragment="content">
 
-    <!-- left nav list div-->
-    <div class="mdui-drawer">
-        <div class="mdui-list" style="margin-bottom: 76px;">
-            <div class="mdui-collapse-item ">
-                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-white">live_tv</i>
-                    <div class="mdui-list-item-content">On Air Live</div>
-                    <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-                </div>
-                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-white">play_circle_filled</i>
-                    <div class="mdui-list-item-content">VOD</div>
-                    <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-                </div>
-                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-red">fiber_manual_record</i>
-                    <a class="mdui-list-item-content" th:if="${session.isEmpty()}" th:href="@{/signin}" target="_self">방송하기</a>
-                    <a class="mdui-list-item-content" th:unless="${session.isEmpty()}" th:href="@{/room/create-room}" target="_self">방송하기</a>
-                </div>
-            </div>
+  <!-- left nav list div-->
+  <div class="mdui-drawer">
+    <div class="mdui-list" style="margin-bottom: 76px;">
+      <div class="mdui-collapse-item ">
+        <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+          <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-white">live_tv</i>
+          <div class="mdui-list-item-content">On Air Live</div>
+          <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
         </div>
+        <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+          <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-white">play_circle_filled</i>
+          <div class="mdui-list-item-content">VOD</div>
+          <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+        </div>
+        <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+          <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-red">fiber_manual_record</i>
+          <a class="mdui-list-item-content" target="_self" th:href="@{/signin}"
+             th:if="${session.isEmpty()}">방송하기</a>
+          <a class="mdui-list-item-content" target="_self" th:href="@{/room/create-room}"
+             th:unless="${session.isEmpty()}">방송하기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mdui-container" style="margin-bottom: 80px;">
+
+    <div class="mdui-row" style="margin: 80px 0;">
+      <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
+      <div
+          class="mdui-textfield mdui-textfield-floating-label mdui-col-xs-12 mdui-col-sm-10 mdui-col-md-8">
+        <label class="mdui-textfield-label">찾는 방송이 있다면?</label>
+        <input class="mdui-textfield-input" id="icon-search" type="text">
+      </div>
+      <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
     </div>
 
-    <div class="mdui-container" style="margin-bottom: 80px;">
-
-        <div class="mdui-row" style="margin: 80px 0;">
-            <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
-            <div class="mdui-textfield mdui-textfield-floating-label mdui-col-xs-12 mdui-col-sm-10 mdui-col-md-8">
-                <label class="mdui-textfield-label">찾는 방송이 있다면?</label>
-                <input class="mdui-textfield-input" id="icon-search" type="text">
-            </div>
-            <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
+    <div class="mdui-row">
+      <div class="mdui-row" style="margin-top: 10px;margin-bottom: 10px;" th:each="room : ${rooms}">
+        <div class="mdui-col-lg-5">
+          <img class="banner" style="vertical-align: middle" th:src="${room.getThumbnailURL()}">
         </div>
-
-        <div class="mdui-row">
-            <div class="mdui-row" style="margin-top: 10px;margin-bottom: 10px;" th:each="room : ${rooms}">
-                <div class="mdui-col-lg-5">
-                    <img class="banner" th:src="${room.getThumbnailURL()}" style="vertical-align: middle">
-                </div>
-                <div class="mdui-col-lg-5">
-                    <table>
-                        <tr>
-                          <td th:text="${room.getRoomName()}">방 제목</td>
-                            <td th:text="${room.getHostname()}">방 호스트</td>
-                            <td th:text="${room.getCreatedAt()}">방 생성일</td>
-                            <td th:text="${room.getShortURL()}">URL</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+        <div class="mdui-col-lg-5">
+          <table>
+            <tr>
+              <td th:text="${room.getRoomName()}">방 제목</td>
+              <td th:text="${room.getHostname()}">방 호스트</td>
+              <td th:text="${room.getCreatedAt()}">방 생성일</td>
+              <td th:text="${room.getShortURL()}">URL</td>
+            </tr>
+          </table>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 </body>
 </html>

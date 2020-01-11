@@ -3,49 +3,51 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="comm-layout">
 <body>
 <section layout:fragment="content">
-    <!-- left nav list div-->
-    <div class="mdui-drawer">
-        <div class="mdui-list" style="margin-bottom: 76px;">
-            <div class="mdui-collapse-item ">
-                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-white">live_tv</i>
-                    <div class="mdui-list-item-content">On Air Live</div>
-                    <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-                </div>
-                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-white">play_circle_filled</i>
-                    <div class="mdui-list-item-content">VOD</div>
-                    <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-                </div>
-                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-red">fiber_manual_record</i>
-                    <a class="mdui-list-item-content" th:href="@{/room/create-room}">방송하기</a>
-                </div>
-            </div>
+  <!-- left nav list div-->
+  <div class="mdui-drawer">
+    <div class="mdui-list" style="margin-bottom: 76px;">
+      <div class="mdui-collapse-item ">
+        <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+          <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-white">live_tv</i>
+          <div class="mdui-list-item-content">On Air Live</div>
+          <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
         </div>
+        <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+          <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-white">play_circle_filled</i>
+          <div class="mdui-list-item-content">VOD</div>
+          <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+        </div>
+        <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+          <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-red">fiber_manual_record</i>
+          <a class="mdui-list-item-content" th:href="@{/room/create-room}">방송하기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mdui-container" style="margin-bottom: 80px;">
+
+    <div class="mdui-row" style="margin: 80px 0;">
+      <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
+      <div
+          class="mdui-textfield mdui-textfield-floating-label mdui-col-xs-5 mdui-col-sm-5 mdui-col-md-4">
+        <input class="mdui-textfield-input" id="icon-search" type="text">
+      </div>
+      <div class="mdui-col-xs-5 mdui-col-sm-1 mdui-col-md-2"></div>
     </div>
 
-    <div class="mdui-container" style="margin-bottom: 80px;">
-
-        <div class="mdui-row" style="margin: 80px 0;">
-            <div class="mdui-col-xs-12 mdui-col-sm-1 mdui-col-md-2"></div>
-            <div class="mdui-textfield mdui-textfield-floating-label mdui-col-xs-5 mdui-col-sm-5 mdui-col-md-4">
-                <input class="mdui-textfield-input" id="icon-search" type="text">
-            </div>
-            <div class="mdui-col-xs-5 mdui-col-sm-1 mdui-col-md-2"></div>
-        </div>
-
-        <div class="mdui-row" style="margin: 80px 0;">
-            <form action="/room/create-room" method="post">
-                <input type="text" id="roomname" name="roomname">
-                <select id="category" name="category">
-                    <option th:each="categoryOpt : ${T(com.github.callmewaggs.youngwildfreelive.model.Category).values()}"
-                            th:value="${categoryOpt}" th:text="${categoryOpt.getTitle()}">
-                </select>
-                <input type="submit" value="제출하기">
-            </form>
-        </div>
+    <div class="mdui-row" style="margin: 80px 0;">
+      <form action="/room/create-room" method="post">
+        <input id="roomname" name="roomname" type="text">
+        <select id="category" name="category">
+          <option
+              th:each="categoryOpt : ${T(com.github.callmewaggs.youngwildfreelive.model.Category).values()}"
+              th:text="${categoryOpt.getTitle()}" th:value="${categoryOpt}">
+        </select>
+        <input type="submit" value="제출하기">
+      </form>
     </div>
+  </div>
 </section>
 </body>
 </html>

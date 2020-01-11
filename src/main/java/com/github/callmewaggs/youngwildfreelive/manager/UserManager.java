@@ -5,15 +5,15 @@ import java.util.Optional;
 
 public interface UserManager {
 
-    void createUser(User user);
+  void createUser(User user);
 
-    User findUserById(long id);
+  User findUserById(long id);
 
-    Optional<User> findUserByUsername(String username);
+  Optional<User> findUserByUsername(String username);
 
-    Optional<User> findUserByUsernameAndPassword(String username, String password);
+  Optional<User> findUserByUsernameAndPassword(String username, String password);
 
-    void updateUser(User user);
+  void updateUser(User user);
 
-    void deleteUserByUsername(String username);
+  void deleteUserByUsername(String username);
 }
