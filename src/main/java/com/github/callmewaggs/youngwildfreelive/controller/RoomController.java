@@ -34,22 +34,23 @@ public class RoomController {
   @GetMapping("/{id}")
   public ModelAndView displayRoomView(@PathVariable Long id
       , HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String username = (String) request.getSession().getAttribute("username");
-    if (username == null) {
+
+    try {
+      long sessionId = (long) request.getSession().getAttribute("id");
+    } catch (Exception e) {
+      request.getSession().removeAttribute("id");
       alertMessage(response, "Invalid access has been detected.");
-      return createModelAndView("signin", null, null);
+      return createModelAndView("index", null, null);
     }
 
     Optional<Room> found = roomManager.findRoomById(id);
 
     // TODO : 1. 유저가 있는지 없는지, 2. 호스트 여부
-    if (found.isPresent()) {
-      return createModelAndView("room", "roomInfo", new RoomVO(found.get()));
-    } else {
-      request.getSession().removeAttribute("username");
+    if (!found.isPresent()) {
       alertMessage(response, "Invalid access has been detected.");
-      return createModelAndView("index", null, null);
+      return createModelAndView("signin", null, null);
     }
+    return createModelAndView("room", "roomInfo", new RoomVO(found.get()));
   }
 
   @PostMapping("/join-room")

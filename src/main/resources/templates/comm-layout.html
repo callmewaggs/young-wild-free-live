@@ -23,7 +23,9 @@
   <div class="mdui-toolbar mdui-color-theme">
         <span class="mdui-typo-headline mdui-text-color-white">
             <a th:href="@{/}" target="_self">
-            <img class="banner" src="images/banner_white.png" style="height: 45px; vertical-align: middle">
+            <img class="banner"
+                 src="https://user-images.githubusercontent.com/35681772/72201973-8854f380-349d-11ea-8eac-d1841fd686e7.png"
+                 style="height: 45px; vertical-align: middle">
             </a>
         </span>
     <div class="mdui-typo-body-1" target="_self" th:href="@{/#}">Home</div>
@@ -46,7 +48,7 @@
   <p>This is a paragraph from the content page<</p>
 </section>
 
-<h1 th:text="${session.username}" style="color: white"></h1>
+<h1 style="color: white" th:text="${session.id}"></h1>
 
 <script src="//www.mdui.org/docs/assets/smooth-scroll-11.1.0/smooth-scroll.min.js"></script>
 <script src="//www.mdui.org/docs/assets/holder-2.9.4/holder.min.js"></script>

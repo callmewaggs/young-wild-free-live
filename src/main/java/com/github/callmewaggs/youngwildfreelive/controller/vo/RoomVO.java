@@ -14,9 +14,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class RoomVO {
     long id;
-    String roomname;
-    String hostname;
-    int nowwatching;
+  String roomName;
+  String hostName;
+  int nowWatching;
     String thumbnailURL;
     Category category;
     String resolution;
@@ -24,9 +24,9 @@ public class RoomVO {
 
     public RoomVO(Room room) {
         this.id = room.getId();
-      this.roomname = room.getRoomName();
-      this.hostname = room.getHost().getNickname();
-        this.nowwatching = room.getNowWatching();
+      this.roomName = room.getRoomName();
+      this.hostName = room.getHost().getNickname();
+      this.nowWatching = room.getNowWatching();
         this.thumbnailURL = room.getThumbnailURL();
         this.category = room.getCategory();
         this.resolution = room.getResolution();

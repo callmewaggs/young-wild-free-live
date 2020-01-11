@@ -51,7 +51,7 @@
           <table>
             <tr>
               <td th:text="${room.getRoomName()}">방 제목</td>
-              <td th:text="${room.getHostname()}">방 호스트</td>
+              <td th:text="${room.getHost().getNickname()}">방 호스트</td>
               <td th:text="${room.getCreatedAt()}">방 생성일</td>
               <td th:text="${room.getShortURL()}">URL</td>
             </tr>
