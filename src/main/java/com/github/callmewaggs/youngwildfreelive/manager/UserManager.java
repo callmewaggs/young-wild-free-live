@@ -7,7 +7,7 @@ public interface UserManager {
 
     void createUser(User user);
 
-    Optional<User> findUserById(long id);
+    User findUserById(long id);
 
     Optional<User> findUserByUsername(String username);
 

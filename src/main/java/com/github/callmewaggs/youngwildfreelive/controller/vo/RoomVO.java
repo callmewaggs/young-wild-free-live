@@ -2,12 +2,11 @@ package com.github.callmewaggs.youngwildfreelive.controller.vo;
 
 import com.github.callmewaggs.youngwildfreelive.model.Category;
 import com.github.callmewaggs.youngwildfreelive.model.Room;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -25,8 +24,8 @@ public class RoomVO {
 
     public RoomVO(Room room) {
         this.id = room.getId();
-        this.roomname = room.getRoomname();
-        this.hostname = room.getHostname();
+      this.roomname = room.getRoomName();
+      this.hostname = room.getHost().getNickname();
         this.nowwatching = room.getNowWatching();
         this.thumbnailURL = room.getThumbnailURL();
         this.category = room.getCategory();

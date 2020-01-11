@@ -27,9 +27,8 @@ public class RoomManagerImpl implements RoomManager {
   }
 
   @Override
-  public Room createRoom(String username, String roomname, Category category) {
-    User user = userManager.findUserByUsername(username);
-    Room room = new Room(roomname, user, category, LocalDateTime.now(), new ArrayList<>());
+  public Room createRoom(String roomName, User user, Category category) {
+    Room room = new Room(roomName, user, category, LocalDateTime.now(), new ArrayList<>());
     return roomRepository.save(room);
   }
 

@@ -64,11 +64,16 @@ public class RoomController {
   }
 
   @PostMapping("/create-room")
-  public String createRoom(String roomname, Category category, HttpServletRequest request) {
-    Long id = (long) request.getSession().getAttribute("id");
-    User host = userManager.
-        Room room = roomManager.createRoom(username, roomname, category);
-    return "redirect:/room" + room.getShortURL();
+  public String createRoom(String roomName, Category category, HttpServletRequest request)
+      throws IllegalAccessException {
+    long id = (long) request.getSession().getAttribute("id");
+    try {
+      User host = userManager.findUserById(id);
+      Room room = roomManager.createRoom(roomName, host, category);
+      return "redirect:/room" + room.getShortURL();
+    } catch (Exception e) {
+      throw new IllegalAccessException(e.getMessage());
+    }
   }
 
   private void alertMessage(HttpServletResponse response, String message) throws IOException {
